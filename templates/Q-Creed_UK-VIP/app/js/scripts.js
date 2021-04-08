@@ -2,7 +2,7 @@
 
 // Safari datepicker
 if (document.getElementById("birth_date")) {
-  document.write('<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n');
+  // document.write('<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n');
   document.write('<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"><\/script>\n');
 }
 
@@ -307,20 +307,24 @@ $(document).ready(function () {
 
   // Date of birth
   $("#birth_date").on("change", function () {
-    if ($(this).val() === '') {
-      $("#birth_date").addClass('change');
-    } else {
-      $("#birth_date").removeClass('change');
+    if (document.getElementById("birth_date") && document.getElementById("birth_date").type === "date") {
+      $(this).css({ 'color': 'transparent' })
+      if ($(this).val() === '') {
+        $("#birth_date").addClass('change');
+      } else {
+        $("#birth_date").removeClass('change');
+      };
+      this.setAttribute(
+        "data-date",
+        moment(this.value, "YYYY-MM-DD")
+          .format(this.getAttribute("data-date-format"))
+      );
     };
-    this.setAttribute(
-      "data-date",
-      moment(this.value, "YYYY-MM-DD")
-        .format(this.getAttribute("data-date-format"))
-    );
     if ($(this).val() !== '') {
+      $(this).closest('.form-group').addClass('focused');
       $(this).addClass('filled');
-    }
-  })
+    };
+  });
 
   // date - set max date
   if (document.getElementById("birth_date")) {

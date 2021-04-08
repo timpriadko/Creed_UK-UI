@@ -263,13 +263,13 @@
       &+label {
         background-color: @green;
         color: #fff;
-        font-weight: @base_font;
+        .base_font();
       }
     }
   }
 
   label {
-    font-family: @secondary_font;
+    .secondary_font();
     font-size: 12px;
     line-height: 140%;
     text-transform: uppercase;
@@ -323,8 +323,8 @@
 .date {
   position: relative;
   height: 38px;
-  font-size: 12px !important;
-  line-height: 26px !important;
+  font-size: 15px;
+  line-height: 18px;
   letter-spacing: .01em;
 
   &::placeholder {

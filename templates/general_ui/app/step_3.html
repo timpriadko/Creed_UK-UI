@@ -53,14 +53,15 @@
           <div class="form-row two-column">
             <div class="form-group">
               <input id="birth_date" class="form-input date" name="birth_date" type="date"
-                data-date-format="DD MMM YYYY">
+                data-date-format="DD MMM YYYY" autocomplete="off">
               <label class="form-label" for="subscribe">DOB</label>
             </div>
             <div class="custom-select">
-              <select name="gender" id="">
+              <select name="gender">
                 <option value="">Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
+                <option value="prefer_not_to_say">Prefer not to say</option>
               </select>
             </div>
           </div>
@@ -70,7 +71,7 @@
         <div class="grid-position--bottom">
 
           <div class="btns">
-            <label class="btn btn--black btn--fixed disabled" id="customer_form_label">
+            <label class="btn btn--black disabled" id="customer_form_label">
               <input type="submit" id="customer_form_submit" readonly />
               Continue
             </label>
