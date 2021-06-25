@@ -4,6 +4,20 @@
 body {
   color: @main_black;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  background-color: transparent;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 input:not([type='submit']).email-input {
   border-bottom: 2px solid #000;
   color: @main_black;
@@ -20,6 +34,7 @@ input[type=date] {
   min-height: 43px;
   border-bottom: 1px solid @main_black;
   font-weight: 500;
+  padding: 11px 0 0;
   .base_font_semibold();
 }
 .title-md {
@@ -432,7 +447,7 @@ form {
 .italic,
 .italic.text > * {
   font-family: @font_italic;
-  font-style: italic;
+  // font-style: italic;
   font-size: 19px;
   line-height: 27px;
 }

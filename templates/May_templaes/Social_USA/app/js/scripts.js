@@ -7,6 +7,30 @@ if (document.getElementById("birth_date") && document.getElementById("birth_date
 }
 
 $(document).ready(function () {
+  // user-form
+  if ($('.form-group').length > 0) {
+    setTimeout(function () {
+      $('.form-group').each(function () {
+        if ($(this).find('input').val().length > 0) {
+          // $(this).addClass('focused');
+          $(this).find('.form-input').addClass('filled');
+        }
+      });
+
+      var birth_date = $("#birth_date");
+
+      if (birth_date.length > 0) {
+        var birth_date_val = birth_date.val();
+
+        if (!birth_date_val) {
+          birth_date.val('');
+        }
+
+        birth_date.attr('data-date', birth_date.val());
+      }
+    }, 50);
+  }
+
   //disable context
   $(document).bind("contextmenu", function (e) {
     return false;
@@ -77,21 +101,6 @@ $(document).ready(function () {
   }
   document.addEventListener("click", closeAllSelect);
   // end custom select
-
-  // form-input
-  $('input').focus(function () {
-    $(this).parents('.form-group').addClass('focused');
-  });
-
-  $('input').blur(function () {
-    var inputValue = $(this).val();
-    if (inputValue == "") {
-      $(this).removeClass('filled');
-      $(this).parents('.form-group').removeClass('focused');
-    } else {
-      $(this).addClass('filled');
-    }
-  });
 
   //validate email
   function isEmail(email) {
@@ -215,22 +224,6 @@ $(document).ready(function () {
 
   customerSubmit.click(form_validation);
 
-  // user-form
-  if ($('.form-group').length > 0) {
-    setTimeout(function () {
-      $('.form-group').each(function () {
-        if ($(this).find('input').val().length > 0) {
-          $(this).addClass('focused');
-          $(this).find('.form-input').addClass('filled');
-        }
-      });
-
-      if ($("#birth_date").length > 0) {
-        $("#birth_date").attr('data-date', $("#birth_date").val());
-      };
-    }, 100)
-  };
-
   // number
   $.fn.inputFilter = function (inputFilter) {
     return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
@@ -291,7 +284,7 @@ $(document).ready(function () {
     const prevArrowBtn = `<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 10" fill="none" style="&#10;    transform: rotate(90deg);&#10;">
     <path d="M1.21436 1.64288L8.00007 8.4286L14.7858 1.64288" stroke="#979797" stroke-width="2" stroke-linecap="round"/>
     </svg></button>`;
-    const nextArrowBtn = `<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 10" fill="none" style="&#10;    transform: rotate(-90deg);&#10;">
+    const nextArrowBtn = `<button type="button" class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 10" fill="none" style="&#10;    transform: rotate(-90deg);&#10;">
     <path d="M1.21436 1.64288L8.00007 8.4286L14.7858 1.64288" stroke="#979797" stroke-width="2" stroke-linecap="round"/>
     </svg></button>`;
 
@@ -310,22 +303,22 @@ $(document).ready(function () {
   // Date of birth
   $("#birth_date").on("change", function () {
     if (document.getElementById("birth_date") && document.getElementById("birth_date").type === "date") {
-      $(this).css({ 'color': 'transparent' })
+      // $(this).css({ 'color': 'transparent' })
       if ($(this).val() === '') {
         $("#birth_date").addClass('change');
       } else {
         $("#birth_date").removeClass('change');
-      };
+      }
       this.setAttribute(
         "data-date",
         moment(this.value, "YYYY-MM-DD")
           .format(this.getAttribute("data-date-format"))
       );
-    };
+    }
     if ($(this).val() !== '') {
-      $(this).closest('.form-group').addClass('focused');
+      // $(this).closest('.form-group').addClass('focused');
       $(this).addClass('filled');
-    };
+    }
   });
 
   // date - set max date
@@ -346,10 +339,14 @@ $(document).ready(function () {
 
     // Safari datepicker
     if (document.getElementById("birth_date").type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
-      $('#birth_date').datepicker({
+      $('#birth_date')
+      .prop('readonly', true)
+      .prop('type', 'text')
+      .datepicker({
         changeMonth: true,
         changeYear: true,
-        dateFormat: 'yy-mm-dd'
+        dateFormat: 'yy-mm-dd',
+        maxDate: today,
       });
     }
   }

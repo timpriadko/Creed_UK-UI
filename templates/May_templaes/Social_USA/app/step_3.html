@@ -6,6 +6,7 @@
   <meta name="google" content="notranslate" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>Creed</title>
+	<link rel="shortcut icon" type="image/x-icon" href="img/creed-ico_180x180.png">
   <link rel="stylesheet" href="css/libs.min.css" />
   <link rel="stylesheet" href="css/style.min.css" />
 </head>
@@ -38,30 +39,30 @@
 
           <div class="form-row fullwidth">
             <div class="form-group">
-              <input class="form-input" name="first_name" type="text">
-              <label class="form-label" for="subscribe">Your first name</label>
+              <input id="first_name" class="form-input" name="first_name" type="text" placeholder=" ">
+              <label class="form-label" for="first_name">Your First Name</label>
             </div>
           </div>
 
           <div class="form-row fullwidth">
             <div class="form-group">
-              <input class="form-input" name="last_name" type="text">
-              <label class="form-label" for="subscribe">Your last name</label>
+              <input id="last_name" class="form-input" name="last_name" type="text" placeholder=" ">
+              <label class="form-label" for="last_name">Your Last Name</label>
             </div>
           </div>
 
           <div class="form-row two-column">
             <div class="form-group">
               <input id="birth_date" class="form-input date" name="birth_date" type="date"
-                data-date-format="DD MMM YYYY" autocomplete="off">
-              <label class="form-label" for="subscribe">DOB</label>
+                data-date-format="DD MMM YYYY" autocomplete="off" placeholder=" ">
+              <label class="form-label" for="birth_date">DOB</label>
             </div>
             <div class="custom-select">
               <select name="gender">
                 <option value="">Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
-                <option value="prefer_not_to_say">Prefer not to say</option>
+                <option value="prefer_not_to_say">Prefer Not To Say</option>
               </select>
             </div>
           </div>

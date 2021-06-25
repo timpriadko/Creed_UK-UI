@@ -28,7 +28,7 @@
         min-height: 380px;
 
         @media screen and (max-width: 560px) {
-            min-height: 261px;
+            min-height: 301px;
         }
 
         .slick-list {
@@ -52,12 +52,26 @@
 
                 p {
                     font-family: @font_italic;
-                    font-style: italic;
+                    // font-style: italic;
                     font-size: 14px;
                     line-height: 20px;
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .slick-arrow {
+        position: relative;
+    }
+
+    .slick-prev {
+        left: -10px;
+    }
+
+    .slick-next {
+        right: -10px;
     }
 }
 

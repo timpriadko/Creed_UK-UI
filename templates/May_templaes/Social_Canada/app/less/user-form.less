@@ -105,33 +105,6 @@
   }
 }
 
-// date
-.date {
-  position: relative;
-  height: 43px;
-  color: @main_black;
-
-  &::-webkit-datetime-edit,
-  &::-webkit-inner-spin-button,
-  &::-webkit-clear-button {
-    display: none;
-  }
-
-  &::-webkit-calendar-picker-indicator {
-    background-position: right;
-    bottom: 0;
-    color: transparent;
-    cursor: pointer;
-    height: auto;
-    left: -20px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
-    opacity: 0;
-  }
-}
-
 .wrap-checkbox {
   max-width: 810px;
   margin: 0 auto;
@@ -317,8 +290,6 @@
   }
 }
 
-
-
 // date
 .date {
   position: relative;
@@ -326,6 +297,7 @@
   font-size: 15px;
   line-height: 18px;
   letter-spacing: .01em;
+  color: @main_black;
 
   &::placeholder {
     font-size: 12px;
@@ -334,7 +306,7 @@
     color: #777;
   }
 
-  &:before {
+  /*&:before {
     position: absolute;
     content: attr(data-date);
     display: inline-block;
@@ -344,7 +316,7 @@
     font-size: 15px;
     line-height: 18px;
     letter-spacing: .01em;
-  }
+  }*/
 
   // &:after {
   //   position: absolute;
@@ -359,27 +331,34 @@
   //   background-repeat: no-repeat;
   // }
 
-  &.change:before {
+  /*&.change:before {
     content: attr(data-content) 'Date of birth';
-  }
+  }*/
 
   &::-webkit-datetime-edit,
   &::-webkit-inner-spin-button,
   &::-webkit-clear-button {
-    display: none;
+    //display: none;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: .01em;
+    color: @main_black;
   }
 
   &::-webkit-calendar-picker-indicator {
+    display: block;
+    // color: transparent;
     background-position: right;
-    bottom: 0;
-    color: transparent;
     cursor: pointer;
-    height: auto;
-    left: -20px;
+    left: 0;
     position: absolute;
     right: 0;
     top: 0;
+    bottom: 0;
     width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
     opacity: 0;
   }
 
